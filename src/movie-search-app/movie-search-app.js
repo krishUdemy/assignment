@@ -191,7 +191,7 @@ class MovieSearchApp extends LitElement {
     const myAjax = new AjaxClass({ jsonPrefix: ")]}'," });
 
     myAjax
-      .get(`http://www.omdbapi.com/?apikey=a5549d08&s=${this.searchKey}`)
+      .get(`https://www.omdbapi.com/?apikey=a5549d08&s=${this.searchKey}`)
       .then((response) => {
         this.movieList = response.data;
       })
