@@ -8,6 +8,9 @@
     "@polymer/polymer": "^3.0.0",
     "lit-element": "^2.4.0"
   },
+  "scripts": {
+    "build": "polymer build"
+  },
   "devDependencies": {
     "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",

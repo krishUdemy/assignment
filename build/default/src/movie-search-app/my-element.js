@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "../../node_modules/lit-element/lit-element.js";
-import { repeat } from "../../node_modules/lit-html/directives/repeat.js";
-export class EmployeeList extends LitElement {
+export class MyElement extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -27,15 +26,14 @@ export class EmployeeList extends LitElement {
     super();
     this.name = 'World';
     this.count = 0;
-    this.names = ['Sreeshant', 'Ojas', 'Vijji'];
   }
 
   render() {
     return html`
       <h1>Hello, ${this.name}!</h1>
-      <ul>
-        ${repeat(this.names, item => html`<li>${item}</li>`)}
-      </ul>
+      <button @click=${this._onClick} part="button">
+        Click Count: ${this.count}
+      </button>
       <slot></slot>
     `;
   }
@@ -45,4 +43,4 @@ export class EmployeeList extends LitElement {
   }
 
 }
-window.customElements.define('employee-list', EmployeeList);
+window.customElements.define('my-element', MyElement);
