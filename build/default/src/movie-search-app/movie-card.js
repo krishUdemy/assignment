@@ -16,13 +16,13 @@ export class MovieCard extends LitElement {
       }
 
       p {
-        font-size: 18px;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
         padding: 0px 12px;
         color: #ff6200;
       }
 
       .card-footer ul {
-        /* text-decoration: none; */
         list-style: none;
         padding-left: 0px;
         float: left;
@@ -30,7 +30,7 @@ export class MovieCard extends LitElement {
       }
 
       .card-footer ul li:first-child {
-        width: 70%;
+        width: 74%;
         margin-right: 6px;
       }
 
@@ -39,7 +39,7 @@ export class MovieCard extends LitElement {
         display: inline-block;
       }
       .card-footer ul li:last-child {
-        width: 25%;
+        width: 24%;
         float: right;
         text-align: right;
       }

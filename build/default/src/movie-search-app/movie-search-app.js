@@ -16,7 +16,8 @@ class MovieSearchApp extends LitElement {
       }
 
       h1 {
-        font-size: 42px;
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
         text-align: center;
         padding: 12px;
         background: #ff6200;
@@ -45,6 +46,10 @@ class MovieSearchApp extends LitElement {
         width: 83%;
         margin-right: 12px;
       }
+      .search-container ul li:nth-child(2) {
+        padding-top: 14px;
+      }
+
       .btn {
         padding: 6px 18px;
         color: white;
@@ -91,6 +96,9 @@ class MovieSearchApp extends LitElement {
       appName: {
         type: String
       },
+      searchKey: {
+        type: String
+      },
       movieList: {
         type: Object
       }
@@ -100,78 +108,12 @@ class MovieSearchApp extends LitElement {
   constructor() {
     super();
     this.appName = "Welcome to the movie search engine!";
-    this.searchKey = "telugu"; // this.movieList = {};
-
-    this.movieList = {
-      Search: [{
-        Title: "The French Connection",
-        Year: "1971",
-        imdbID: "tt0067116",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BOTZhY2E3NmItMGIwNi00OTA2LThkYmEtODFiZTM0NGI0ZWU5XkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_SX300.jpg"
-      }, {
-        Title: "French Kiss",
-        Year: "1995",
-        imdbID: "tt0113117",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMTkzMjg5MDQ3M15BMl5BanBnXkFtZTgwOTM5NTE0MDE@._V1_SX300.jpg"
-      }, {
-        Title: "French Connection II",
-        Year: "1975",
-        imdbID: "tt0073018",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMzZmZWIwNmItOTM4MS00N2FjLThlYTctNDYxZTU5NjZiMGQ4XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
-      }, {
-        Title: "The French Lieutenant's Woman",
-        Year: "1981",
-        imdbID: "tt0082416",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BZTEwZjRjMGYtZTA5MS00NTVjLTkxMWQtNGMxYmFhMmE1NjUzXkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_SX300.jpg"
-      }, {
-        Title: "French Fried Vacation 2",
-        Year: "1979",
-        imdbID: "tt0078907",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMTQzMDAxNDYwOV5BMl5BanBnXkFtZTgwNTE2MjkwMzE@._V1_SX300.jpg"
-      }, {
-        Title: "French Fried Vacation",
-        Year: "1978",
-        imdbID: "tt0077276",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BYmIxMDRmYWYtYzU2NS00ZGVlLWIzNWMtYWJlMjRmYmYyODE5XkEyXkFqcGdeQXVyNjI5NTk0MzE@._V1_SX300.jpg"
-      }, {
-        Title: "Slap Her, She's French!",
-        Year: "2002",
-        imdbID: "tt0187512",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMTI2NTUxNzk2M15BMl5BanBnXkFtZTYwMzgyMDg5._V1_SX300.jpg"
-      }, {
-        Title: "French Twist",
-        Year: "1995",
-        imdbID: "tt0113149",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMWEwNWY1ZjQtYWMxYS00ZDY2LTg2Y2YtZDc5MTM4MzE0NTM4XkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg"
-      }, {
-        Title: "Sexual Chronicles of a French Family",
-        Year: "2012",
-        imdbID: "tt1753584",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMTM0Mjc3MDY0Ml5BMl5BanBnXkFtZTcwMDgwMzc4Nw@@._V1_SX300.jpg"
-      }, {
-        Title: "Excuse My French",
-        Year: "2014",
-        imdbID: "tt3510372",
-        Type: "movie",
-        Poster: "https://m.media-amazon.com/images/M/MV5BMTc4MDYxMjE5OV5BMl5BanBnXkFtZTgwOTA0NjgxMTE@._V1_SX300.jpg"
-      }],
-      totalResults: "525",
-      Response: "True"
-    };
+    this.searchKey = "telugu";
+    this.movieList = {};
   }
 
-  async searchMovie() {
-    // this.searchKey = document.getElementById("searchInput").value;
-    // console.log('searchKey: ', document.querySelector("searchInput").value);
+  searchMovie() {
+    this.searchKey = this.shadowRoot.querySelector("#searchInput").value;
     const myAjax = new AjaxClass({
       jsonPrefix: ")]}',"
     });
@@ -192,7 +134,6 @@ class MovieSearchApp extends LitElement {
               <lion-input
                 label="Enter search key"
                 id="searchInput"
-                .value="${this.searchKey}"
               ></lion-input>
             </li>
             <!-- <li><lion-button class="button" @click=${this.searchMovie}>Search</lion-button></li> -->
@@ -203,8 +144,7 @@ class MovieSearchApp extends LitElement {
         </div>
         <div class="movies-list">
           ${Object.keys(this.movieList).length === 0 ? html`<p>
-                Please enter language key word and search for your favorite
-                movies.
+                Please enter a keyword to search your favorite movies.
               </p>` : html`${repeat(this.movieList.Search, movie => movie.imdbID, movie => html`<movie-card .movie=${movie}></movie-card>`)}`}
         </div>
       </div>
