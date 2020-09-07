@@ -1,0 +1,7 @@
+{
+  "name": "movie-search",
+  "short_name": "movie-search",
+  "description": "Searching a movie based on the language keyword.",
+  "start_url": "/",
+  "display": "standalone"
+}
