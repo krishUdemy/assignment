@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "../../node_modules/lit-element/lit-element.js";
-import { repeat } from "../../node_modules/lit-html/directives/repeat.js";
 export class MovieCard extends LitElement {
   static get styles() {
     return css`
@@ -73,11 +72,7 @@ export class MovieCard extends LitElement {
   }
 
   static get properties() {
-    return {
-      movieList: {
-        type: Array
-      }
-    };
+    return {};
   }
 
   constructor() {
