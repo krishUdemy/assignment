@@ -3,8 +3,6 @@ import { repeat } from "lit-html/directives/repeat";
 import "@lion/input/lion-input.js";
 import "@lion/button/lion-button.js";
 import { ajax, AjaxClass } from "@lion/ajax";
-import "./my-element";
-import "./employee-list";
 import "./movie-card";
 
 class MovieSearchApp extends LitElement {
