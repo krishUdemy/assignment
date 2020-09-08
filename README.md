@@ -1,4 +1,4 @@
-# \<Movie search engine\>
+Movie search engine
 
 Searching a movie based on your favorite movie name.
 
