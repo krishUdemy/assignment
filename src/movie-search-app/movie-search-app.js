@@ -1,13 +1,22 @@
+//Core modules
 import { LitElement, html, css } from "lit-element";
 import { repeat } from "lit-html/directives/repeat";
+
+//Lion components
 import "@lion/input/lion-input.js";
 import "@lion/button/lion-button.js";
 import { ajax, AjaxClass } from "@lion/ajax";
+
+//Custom components
 import "./movie-card";
 
 class MovieSearchApp extends LitElement {
   static get styles() {
     return css`
+
+      :host {
+        font-family: Arial, Helvetica, sans-serif;
+      }
       .main-container {
         width: 100%;
         background-color: #fff;
@@ -65,10 +74,6 @@ class MovieSearchApp extends LitElement {
         border-color: #ff6200;
       }
 
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-      }
-
       /* Small devices (portrait tablets and large phones, 600px and up) */
       @media only screen and (min-width: 600px) {
         .search-container ul li {
@@ -85,10 +90,6 @@ class MovieSearchApp extends LitElement {
         .movies-list {
           width: 100%;
         }
-      }
-
-      /* Extra large devices (large laptops and desktops, 1200px and up) */
-      @media only screen and (min-width: 1200px) {
       }
     `;
   }

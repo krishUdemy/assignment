@@ -17,7 +17,6 @@ export class MovieCard extends LitElement {
 
       p {
         font-size: 16px;
-        font-family: Arial, Helvetica, sans-serif;
         padding: 0px 12px;
         color: #ff6200;
       }
@@ -44,10 +43,6 @@ export class MovieCard extends LitElement {
         text-align: right;
       }
 
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-      }
-
       /* Small devices (portrait tablets and large phones, 600px and up) */
       @media only screen and (min-width: 600px) {
       }
@@ -64,10 +59,6 @@ export class MovieCard extends LitElement {
         .card-container img {
           height: 400px;
         }
-      }
-
-      /* Extra large devices (large laptops and desktops, 1200px and up) */
-      @media only screen and (min-width: 1200px) {
       }
     `;
   }
