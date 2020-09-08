@@ -23,6 +23,10 @@ class MovieSearchApp extends LitElement {
         border: 1px solid #ff6200;
       }
 
+      h2 {
+        color: red;
+      }
+
       .movies-list {
         width: 95%;
         margin: 0 auto;
@@ -94,13 +98,15 @@ class MovieSearchApp extends LitElement {
       appName: { type: String },
       searchKey: { type: String },
       movieList: { type: Object },
+      errorMessage: { type: String },
     };
   }
   constructor() {
     super();
     this.appName = "Welcome to the movie search engine!";
-    this.searchKey = "telugu";
-    this.movieList = {};
+    this.searchKey = "";
+    this.movieList = { Search: [] };
+    this.errorMessage = null;
   }
 
   searchMovie() {
@@ -109,10 +115,17 @@ class MovieSearchApp extends LitElement {
     myAjax
       .get(`https://www.omdbapi.com/?apikey=a5549d08&s=${this.searchKey}`)
       .then((response) => {
-        this.movieList = response.data;
+        if (response.data.Response === "False") {
+          this.errorMessage = response.data.Error;
+          this.movieList.Search = [];
+        } else {
+          this.movieList = response.data;
+          this.errorMessage = null;
+        }
       })
       .catch((error) => {
-        console.log(error);
+        this.errorMessage = "Movie not found!";
+        this.movieList.Search = [];
       });
   }
 
@@ -120,23 +133,22 @@ class MovieSearchApp extends LitElement {
     return html`
       <div class="main-container">
         <h1>${this.appName}</h1>
+        <h2>${this.errorMessage}</h2>
         <div class="search-container">
           <ul>
             <li>
               <lion-input
-                label="Enter search key"
+                label="Enter a search key"
                 id="searchInput"
               ></lion-input>
             </li>
-            <!-- <li><lion-button class="button" @click=${this
-              .searchMovie}>Search</lion-button></li> -->
             <li>
               <button class="btn" @click=${this.searchMovie}>Search</button>
             </li>
           </ul>
         </div>
         <div class="movies-list">
-          ${Object.keys(this.movieList).length === 0
+          ${Object.keys(this.movieList.Search).length === 0
             ? html`<p>
                 Please enter a keyword to search your favorite movies.
               </p>`
