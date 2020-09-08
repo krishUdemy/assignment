@@ -1,6 +1,6 @@
 # \<movie-search\>
 
-Searching a movie based on your favorite movie name keyword.
+Searching a movie based on your favorite movie name.
 
 ## Install the Polymer-CLI
 
