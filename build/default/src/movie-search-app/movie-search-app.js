@@ -1,13 +1,20 @@
+//Core modules
 import { LitElement, html, css } from "../../node_modules/lit-element/lit-element.js";
-import { repeat } from "../../node_modules/lit-html/directives/repeat.js";
+import { repeat } from "../../node_modules/lit-html/directives/repeat.js"; //Lion components
+
 import "../../node_modules/@lion/input/lion-input.js";
 import "../../node_modules/@lion/button/lion-button.js";
-import { ajax, AjaxClass } from "../../node_modules/@lion/ajax/index.js";
+import { ajax, AjaxClass } from "../../node_modules/@lion/ajax/index.js"; //Custom components
+
 import "./movie-card.js";
 
 class MovieSearchApp extends LitElement {
   static get styles() {
     return css`
+
+      :host {
+        font-family: Arial, Helvetica, sans-serif;
+      }
       .main-container {
         width: 100%;
         background-color: #fff;
@@ -65,10 +72,6 @@ class MovieSearchApp extends LitElement {
         border-color: #ff6200;
       }
 
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
-      }
-
       /* Small devices (portrait tablets and large phones, 600px and up) */
       @media only screen and (min-width: 600px) {
         .search-container ul li {
@@ -85,10 +88,6 @@ class MovieSearchApp extends LitElement {
         .movies-list {
           width: 100%;
         }
-      }
-
-      /* Extra large devices (large laptops and desktops, 1200px and up) */
-      @media only screen and (min-width: 1200px) {
       }
     `;
   }
