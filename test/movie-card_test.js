@@ -1,19 +1,24 @@
-import {fixture, html} from '@open-wc/testing';
-import { MovieCard } from "../src/movie-search-app/movie-card";
-import {movieList} from '../src/movie-search-app/movieList';
+import { fixture, html } from '@open-wc/testing';
+import { MovieCard } from '../src/movie-search-app/movie-card';
 
-const assert = chai.assert;
+const { assert } = chai;
 
-suite("movie-card", () => {
-
-  test("MovieCard is defined", () => {
-    const el = document.createElement("movie-card");
+suite('movie-card', () => {
+  test('MovieCard is defined', () => {
+    const el = document.createElement('movie-card');
     assert.instanceOf(el, MovieCard);
   });
 
-  test('MovieCard should render passed values', async () => {
-    const movieStub = movieList.Search[0];
-    const el = await fixture(html`<movie-card .movie=${movieStub}></movie-card>`);
+  test('Movie display check', async () => {
+    const mockData = {
+      Title: 'The English Patient',
+      Year: '1996',
+      Poster:
+        'https://m.media-amazon.com/images/M/MV5BOTkxZTdkNTQtM2QwOS00NzRlLWEyMGItYTcxOTE4NTgyNGVhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
+    };
+    const el = await fixture(
+      html`<movie-card .movie=${mockData}></movie-card>`,
+    );
     await el.updateComplete;
     assert.shadowDom.equal(
       el,
@@ -26,10 +31,8 @@ suite("movie-card", () => {
           <li><p>1996</p></li>
         </ul>
       </div>
-      <slot></slot>
     </div>
-    `
+    `,
     );
   });
-
 });

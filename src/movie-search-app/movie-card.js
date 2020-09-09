@@ -1,6 +1,7 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from 'lit-element';
 
 export class MovieCard extends LitElement {
+  
   static get styles() {
     return css`
       .card-container {
@@ -43,19 +44,12 @@ export class MovieCard extends LitElement {
         text-align: right;
       }
 
-      /* Small devices (portrait tablets and large phones, 600px and up) */
-      @media only screen and (min-width: 600px) {
-      }
-
-      /* Medium devices (landscape tablets, 768px and up) */
-      @media only screen and (min-width: 768px) {
-      }
-
       /* Large devices (laptops/desktops, 992px and up) */
       @media only screen and (min-width: 992px) {
         .card-container {
           width: 31%;
         }
+
         .card-container img {
           height: 400px;
         }
@@ -63,19 +57,10 @@ export class MovieCard extends LitElement {
     `;
   }
 
-  static get properties() {
-    return {
-    };
-  }
-
-  constructor() {
-    super();
-  }
-
   render() {
     return html`
       <div class="card-container">
-        ${this.movie.Poster !== "N/A"
+        ${this.movie.Poster !== 'N/A'
           ? html`<img src="${this.movie.Poster}" />`
           : html`<img src="http://via.placeholder.com/300x403" />`}
         <div class="card-footer">
@@ -84,10 +69,9 @@ export class MovieCard extends LitElement {
             <li><p>${this.movie.Year}</p></li>
           </ul>
         </div>
-        <slot></slot>
       </div>
     `;
   }
 }
 
-window.customElements.define("movie-card", MovieCard);
+window.customElements.define('movie-card', MovieCard);

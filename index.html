@@ -1,20 +1,17 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Movie search engine</title>
-    <meta name="description" content="Searching a movie based on your favourite movie name.">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <meta name="description" content="Searching a movie based on your favourite movie name.">
+  <title>Movie search engine</title>
+</head>
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+<body>
+  <movie-search-app></movie-search-app>
+  <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module" src="/src/movie-search-app/movie-search-app.js"></script>
+</body>
 
-    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-    <script type="module" src="/src/movie-search-app/movie-search-app.js" crossorigin></script>
-  </head>
-  <body>
-    <movie-search-app></movie-search-app>
-  </body>
 </html>

@@ -1,22 +1,21 @@
 //Core modules
-import { LitElement, html, css } from "lit-element";
-import { repeat } from "lit-html/directives/repeat";
+import { LitElement, html, css } from 'lit-element';
+import { repeat } from 'lit-html/directives/repeat';
+import { AjaxClass } from '@lion/ajax';
 
 //Lion components
-import "@lion/input/lion-input.js";
-import "@lion/button/lion-button.js";
-import { ajax, AjaxClass } from "@lion/ajax";
+import '@lion/input/lion-input.js';
 
 //Custom components
-import "./movie-card";
+import './movie-card';
 
 export class MovieSearchApp extends LitElement {
   static get styles() {
     return css`
-
       :host {
         font-family: Arial, Helvetica, sans-serif;
       }
+
       .main-container {
         width: 100%;
         background-color: #fff;
@@ -57,6 +56,7 @@ export class MovieSearchApp extends LitElement {
         width: 83%;
         margin-right: 12px;
       }
+
       .search-container ul li:nth-child(2) {
         padding-top: 14px;
       }
@@ -68,6 +68,7 @@ export class MovieSearchApp extends LitElement {
         border: 1px solid #ff6200;
         border-radius: 6px;
       }
+
       .btn:hover {
         background-color: #fff;
         color: #ff6200;
@@ -79,10 +80,6 @@ export class MovieSearchApp extends LitElement {
         .search-container ul li {
           float: left;
         }
-      }
-
-      /* Medium devices (landscape tablets, 768px and up) */
-      @media only screen and (min-width: 768px) {
       }
 
       /* Large devices (laptops/desktops, 992px and up) */
@@ -102,21 +99,22 @@ export class MovieSearchApp extends LitElement {
       errorMessage: { type: String },
     };
   }
+
   constructor() {
     super();
-    this.appName = "Welcome to the movie search engine!";
-    this.searchKey = "";
+    this.appName = 'Welcome to the movie search engine!';
+    this.searchKey = '';
     this.movieList = { Search: [] };
     this.errorMessage = null;
   }
 
   searchMovie() {
-    this.searchKey = this.shadowRoot.querySelector("#searchInput").value;
+    this.searchKey = this.shadowRoot.querySelector('#searchInput').value;
     const myAjax = new AjaxClass({ jsonPrefix: ")]}'," });
     myAjax
       .get(`https://www.omdbapi.com/?apikey=a5549d08&s=${this.searchKey}`)
       .then((response) => {
-        if (response.data.Response === "False") {
+        if (response.data.Response === 'False') {
           this.errorMessage = response.data.Error;
           this.movieList.Search = [];
         } else {
@@ -125,7 +123,7 @@ export class MovieSearchApp extends LitElement {
         }
       })
       .catch((error) => {
-        this.errorMessage = "Movie not found!";
+        this.errorMessage = 'Movie not found!';
         this.movieList.Search = [];
       });
   }
@@ -156,7 +154,7 @@ export class MovieSearchApp extends LitElement {
             : html`${repeat(
                 this.movieList.Search,
                 (movie) => movie.imdbID,
-                (movie) => html`<movie-card .movie=${movie}></movie-card>`
+                (movie) => html`<movie-card .movie=${movie}></movie-card>`,
               )}`}
         </div>
       </div>
@@ -164,30 +162,4 @@ export class MovieSearchApp extends LitElement {
   }
 }
 
-export const label = () => html`
-  <style>
-    .u-sr-only {
-      position: absolute;
-      top: 0;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip-path: inset(100%);
-      clip: rect(1px, 1px, 1px, 1px);
-      white-space: nowrap;
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-  <lion-input>
-    <label slot="label"
-      >Label
-      <span class="u-sr-only"
-        >partially only visible for screen-readers</span
-      ></label
-    >
-  </lion-input>
-`;
-
-window.customElements.define("movie-search-app", MovieSearchApp);
+window.customElements.define('movie-search-app', MovieSearchApp);
