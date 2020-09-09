@@ -1,8 +1,8 @@
 ## Movie search engine
 
 Welcome to the movie search engine! 
-The app has been built using polymer lastest technologies litElements and lit-html. 
-It's a responsive web design app where you can access the app from any mobile, tablet and desktop device. The experince will be good across the devices. You can search your favourite movie just in a click.
+The app has been built using polymerjs's light weight lastest technologies litElement and lit-html. 
+It's a responsive web design app where you can access the app from any device like mobile, tablet or desktop. The experince will be the same across the devices. You can search your favourite movie just in a click.
 
 ## Install the Polymer-CLI
 
