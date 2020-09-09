@@ -10,7 +10,7 @@ import { ajax, AjaxClass } from "@lion/ajax";
 //Custom components
 import "./movie-card";
 
-class MovieSearchApp extends LitElement {
+export class MovieSearchApp extends LitElement {
   static get styles() {
     return css`
 
@@ -151,7 +151,7 @@ class MovieSearchApp extends LitElement {
         <div class="movies-list">
           ${Object.keys(this.movieList.Search).length === 0
             ? html`<p>
-                Please enter a keyword to search your favorite movies.
+                Please enter a keyword to search your favourite movies.
               </p>`
             : html`${repeat(
                 this.movieList.Search,

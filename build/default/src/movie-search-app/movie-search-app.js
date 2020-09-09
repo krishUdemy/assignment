@@ -158,7 +158,7 @@ class MovieSearchApp extends LitElement {
         </div>
         <div class="movies-list">
           ${Object.keys(this.movieList.Search).length === 0 ? html`<p>
-                Please enter a keyword to search your favorite movies.
+                Please enter a keyword to search your favourite movies.
               </p>` : html`${repeat(this.movieList.Search, movie => movie.imdbID, movie => html`<movie-card .movie=${movie}></movie-card>`)}`}
         </div>
       </div>

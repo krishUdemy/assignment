@@ -79,7 +79,7 @@ export class MovieCard extends LitElement {
           ? html`<img src="${this.movie.Poster}" />`
           : html`<img src="http://via.placeholder.com/300x403" />`}
         <div class="card-footer">
-          <ul>
+          <ul class="card-details">
             <li><p>${this.movie.Title}</p></li>
             <li><p>${this.movie.Year}</p></li>
           </ul>
